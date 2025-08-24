@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Gradient Generator & Toolbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header with Logo and Navigation -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800">CSS Toolbox</h1>
+                        <p class="text-gray-600 text-sm">Professional CSS Generators</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#gradient" class="nav-link active text-white" onclick="scrollToSection('gradient')">
+                        <svg class="w-5 h-5" fill="aqua" stroke="currentColor" viewBox="0 0 24 24">
+                            <path class="text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                        <span class="text-white">Gradient</span>
+                    </a>
+                    <a href="#glass" class="nav-link" onclick="scrollToSection('glass')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        <span>Glass</span>
+                    </a>
+                    <a href="#shadow" class="nav-link" onclick="scrollToSection('shadow')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <span>Shadow</span>
+                    </a>
+                    <a href="#border" class="nav-link" onclick="scrollToSection('border')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                        <span>Border</span>
+                    </a>
+                    <a href="#text" class="nav-link" onclick="scrollToSection('text')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span>Text</span>
+                    </a>
+                    
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle dark/light mode">
+                        <!-- Sun icon for dark mode -->
+                        <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <!-- Moon icon for light mode -->
+                        <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="md:hidden">
+                <div class="flex space-x-2 overflow-x-auto pb-2">
+                    <a href="#gradient" class="nav-link-mobile active" onclick="scrollToSection('gradient')">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                        <span>Gradient</span>
+                    </a>
+                    <a href="#glass" class="nav-link-mobile" onclick="scrollToSection('glass')">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        <span>Glass</span>
+                    </a>
+                    <a href="#shadow" class="nav-link-mobile" onclick="scrollToSection('shadow')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <span>Shadow</span>
+                    </a>
+                    <a href="#border" class="nav-link-mobile" onclick="scrollToSection('border')">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                        <span>Border</span>
+                    </a>
+                    <a href="#text" class="nav-link-mobile" onclick="scrollToSection('text')">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span>Text</span>
+                    </a>
+                    
+                    <!-- Mobile Theme Toggle -->
+                    <button id="mobileThemeToggle" class="theme-toggle-btn-mobile" onclick="toggleTheme()" title="Toggle dark/light mode">
+                        <!-- Sun icon for dark mode -->
+                        <svg id="mobileSunIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <!-- Moon icon for light mode -->
+                        <svg id="mobileMoonIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Gradient Generator -->
+        <section id="gradient" class="bg-white rounded-lg p-6 shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Gradient Generator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <div class="space-y-4">
+                        <div class="gradient-control">
+                            <label class="block text-sm font-medium mb-2">Preset Gradients</label>
+                            <div class="preset-gradients">
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)" onclick="applyPresetGradient('sunset')"></div>
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" onclick="applyPresetGradient('pink')"></div>
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" onclick="applyPresetGradient('ocean')"></div>
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" onclick="applyPresetGradient('nature')"></div>
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)" onclick="applyPresetGradient('sunrise')"></div>
+                                <div class="preset-gradient" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" onclick="applyPresetGradient('pastel')"></div>
+                            </div>
+                            <label class="block text-sm font-medium mt-4">Color Stops</label>
+                            <div class="color-stops space-y-2"></div>
+                            <div class="flex gap-2 mt-2">
+                                <button onclick="addColorStop()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                    Add Color Stop
+                                </button>
+                                <button onclick="generateRandomGradient()" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+                                    Random
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Direction</label>
+                            <select id="gradientDirection" class="w-full p-2 border rounded" onchange="updateGradient()">
+                                <option value="to right">Horizontal (→)</option>
+                                <option value="to left">Horizontal (←)</option>
+                                <option value="to bottom">Vertical (↓)</option>
+                                <option value="to top">Vertical (↑)</option>
+                                <option value="to bottom right">Diagonal (↘)</option>
+                                <option value="to bottom left">Diagonal (↙)</option>
+                                <option value="to top right">Diagonal (↗)</option>
+                                <option value="to top left">Diagonal (↖)</option>
+                                <option value="45deg">45° Angle</option>
+                                <option value="135deg">135° Angle</option>
+                                <option value="225deg">225° Angle</option>
+                                <option value="315deg">315° Angle</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-box gradient-preview h-48 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('gradient')">Copy</button>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 rounded">
+                        <code class="gradient-output text-sm"></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Glass Morphism Generator -->
+        <section id="glass" class="bg-white rounded-lg p-6 shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Glass Morphism Generator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium">Blur</label>
+                        <input type="range" id="glassBlur" min="0" max="20" value="10" class="w-full">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Transparency</label>
+                        <input type="range" id="glassAlpha" min="0" max="1" step="0.1" value="0.2" class="w-full">
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-box glass-preview h-48 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('glass')">Copy</button>
+                        <div class="glass-content">
+                            <h3 class="text-lg font-semibold mb-2">Glass Effect</h3>
+                            <p class="text-sm opacity-80">This is a glass morphism element with backdrop blur and transparency.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 rounded">
+                        <code class="glass-output text-sm"></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Box Shadow Generator -->
+        <section id="shadow" class="bg-white rounded-lg p-6 shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Box Shadow Generator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-4" id="boxShadowControls">
+                    <div>
+                        <label class="block text-sm font-medium">Horizontal</label>
+                        <input type="range" id="boxH" min="-50" max="50" value="0" class="w-full" oninput="updateBoxShadow()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Vertical</label>
+                        <input type="range" id="boxV" min="-50" max="50" value="0" class="w-full" oninput="updateBoxShadow()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Blur</label>
+                        <input type="range" id="boxBlur" min="0" max="100" value="10" class="w-full" oninput="updateBoxShadow()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Spread</label>
+                        <input type="range" id="boxSpread" min="-50" max="50" value="0" class="w-full" oninput="updateBoxShadow()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Color</label>
+                        <input type="color" id="boxColor" value="#000000" class="w-full" oninput="updateBoxShadow()">
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-box box-preview h-48 rounded-lg bg-white">
+                        <button class="copy-btn" onclick="copyToClipboard('box-shadow')">Copy</button>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 rounded">
+                        <code class="box-output text-sm"></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Border Radius Generator -->
+        <section id="border" class="bg-white rounded-lg p-6 shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Border Radius Generator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium">Top Left</label>
+                        <input type="range" id="borderTopLeft" min="0" max="100" value="0" class="w-full" oninput="updateBorderRadius()">
+                        <span class="text-xs text-gray-500" id="borderTopLeftValue">0px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Top Right</label>
+                        <input type="range" id="borderTopRight" min="0" max="100" value="0" class="w-full" oninput="updateBorderRadius()">
+                        <span class="text-xs text-gray-500" id="borderTopRightValue">0px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Bottom Right</label>
+                        <input type="range" id="borderBottomRight" min="0" max="100" value="0" class="w-full" oninput="updateBorderRadius()">
+                        <span class="text-xs text-gray-500" id="borderBottomRightValue">0px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Bottom Left</label>
+                        <input type="range" id="borderBottomLeft" min="0" max="100" value="0" class="w-full" oninput="updateBorderRadius()">
+                        <span class="text-xs text-gray-500" id="borderBottomLeftValue">0px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Uniform Radius</label>
+                        <input type="range" id="borderUniform" min="0" max="100" value="0" class="w-full" oninput="updateUniformBorderRadius()">
+                        <span class="text-xs text-gray-500" id="borderUniformValue">0px</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-box border-radius-preview h-48 rounded-lg bg-white">
+                        <button class="copy-btn" onclick="copyToClipboard('border-radius')">Copy</button>
+                        Border Radius
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 rounded">
+                        <code class="border-radius-output text-sm"></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text Shadow Generator -->
+        <section id="text" class="bg-white rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Text Shadow Generator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium">Horizontal Offset</label>
+                        <input type="range" id="textH" min="-50" max="50" value="2" class="w-full" oninput="updateTextShadow()">
+                        <span class="text-xs text-gray-500" id="textHValue">2px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Vertical Offset</label>
+                        <input type="range" id="textV" min="-50" max="50" value="2" class="w-full" oninput="updateTextShadow()">
+                        <span class="text-xs text-gray-500" id="textVValue">2px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Blur Radius</label>
+                        <input type="range" id="textBlur" min="0" max="50" value="4" class="w-full" oninput="updateTextShadow()">
+                        <span class="text-xs text-gray-500" id="textBlurValue">4px</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Shadow Color</label>
+                        <input type="color" id="textColor" value="#000000" class="w-full" oninput="updateTextShadow()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Text Color</label>
+                        <input type="color" id="textTextColor" value="#1f2937" class="w-full" oninput="updateTextShadow()">
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-box text-preview h-48 rounded-lg">
+                        <button class="copy-btn" onclick="copyToClipboard('text-shadow')">Copy</button>
+                        Sample Text
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 rounded">
+                        <code class="text-output text-sm"></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-gray-300">
+        <p class="text-sm">CSS Gradient Generator & Toolbox - Built with ❤️ for developers by <a target="_blank" href="https://github.com/webdev-shyam" class="text-gray-600 hover:text-gray-900">Ganeshyam Verma</a></p>
+        <p class="text-xs mt-2">Generate beautiful gradients, shadows, and CSS effects with ease</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
