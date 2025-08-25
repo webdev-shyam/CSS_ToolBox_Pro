@@ -198,9 +198,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Ganeshyam Verma** - [@yourtwitter](https://twitter.com/yourtwitter)
+**Ganeshyam Verma** -  wid2839@gmail.com
 
-Project Link: [https://github.com/yourusername/css-toolbox-pro](https://github.com/yourusername/css-toolbox-pro)
 
 ---
 
